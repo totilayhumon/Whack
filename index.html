@@ -21,21 +21,32 @@
         <!-- Ground -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#228B22"></a-plane>
 
-        <!-- Game Board - 9 holes in 3x3 grid (made deeper) -->
+        <!-- Holes - positioned BELOW ground level to create actual holes -->
         <!-- Row 1 -->
-        <a-cylinder id="hole1" position="-2 -0.3 -2" radius="0.6" height="0.6" color="#654321"></a-cylinder>
-        <a-cylinder id="hole2" position="0 -0.3 -2" radius="0.6" height="0.6" color="#654321"></a-cylinder>
-        <a-cylinder id="hole3" position="2 -0.3 -2" radius="0.6" height="0.6" color="#654321"></a-cylinder>
+        <a-cylinder id="hole1" position="-2 -0.4 -2" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+        <a-cylinder id="hole2" position="0 -0.4 -2" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+        <a-cylinder id="hole3" position="2 -0.4 -2" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
 
         <!-- Row 2 -->
-        <a-cylinder id="hole4" position="-2 -0.3 0" radius="0.6" height="0.6" color="#654321"></a-cylinder>
-        <a-cylinder id="hole5" position="0 -0.3 0" radius="0.6" height="0.6" color="#654321"></a-cylinder>
-        <a-cylinder id="hole6" position="2 -0.3 0" radius="0.6" height="0.6" color="#654321"></a-cylinder>
+        <a-cylinder id="hole4" position="-2 -0.4 0" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+        <a-cylinder id="hole5" position="0 -0.4 0" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+        <a-cylinder id="hole6" position="2 -0.4 0" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
 
         <!-- Row 3 -->
-        <a-cylinder id="hole7" position="-2 -0.3 2" radius="0.6" height="0.6" color="#654321"></a-cylinder>
-        <a-cylinder id="hole8" position="0 -0.3 2" radius="0.6" height="0.6" color="#654321"></a-cylinder>
-        <a-cylinder id="hole9" position="2 -0.3 2" radius="0.6" height="0.6" color="#654321"></a-cylinder>
+        <a-cylinder id="hole7" position="-2 -0.4 2" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+        <a-cylinder id="hole8" position="0 -0.4 2" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+        <a-cylinder id="hole9" position="2 -0.4 2" radius="0.6" height="0.8" color="#2F1B14"></a-cylinder>
+
+        <!-- Hole rims - rings around holes at ground level -->
+        <a-ring id="rim1" position="-2 0.01 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim2" position="0 0.01 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim3" position="2 0.01 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim4" position="-2 0.01 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim5" position="0 0.01 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim6" position="2 0.01 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim7" position="-2 0.01 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim8" position="0 0.01 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
+        <a-ring id="rim9" position="2 0.01 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#654321"></a-ring>
 
         <!-- Moles (start hidden below ground) -->
         <!-- Box Moles -->
@@ -103,15 +114,15 @@
 
         // Mole positions - start hidden below, pop up above ground
         const molePositions = [
-            { down: "-2 -0.8 -2", up: "-2 0.8 -2" },   // mole1 (box)
-            { down: "0 -0.8 -2", up: "0 0.6 -2" },     // mole2 (sphere)
-            { down: "2 -0.8 -2", up: "2 0.8 -2" },     // mole3 (box)
-            { down: "-2 -0.8 0", up: "-2 0.6 0" },     // mole4 (sphere)
-            { down: "0 -0.8 0", up: "0 0.8 0" },       // mole5 (box)
-            { down: "2 -0.8 0", up: "2 0.6 0" },       // mole6 (sphere)
-            { down: "-2 -0.8 2", up: "-2 0.8 2" },     // mole7 (box)
-            { down: "0 -0.8 2", up: "0 0.6 2" },       // mole8 (sphere)
-            { down: "2 -0.8 2", up: "2 0.8 2" }        // mole9 (box)
+            { down: "-2 -0.8 -2", up: "-2 0.6 -2" },   // mole1 (box)
+            { down: "0 -0.8 -2", up: "0 0.4 -2" },     // mole2 (sphere)
+            { down: "2 -0.8 -2", up: "2 0.6 -2" },     // mole3 (box)
+            { down: "-2 -0.8 0", up: "-2 0.4 0" },     // mole4 (sphere)
+            { down: "0 -0.8 0", up: "0 0.6 0" },       // mole5 (box)
+            { down: "2 -0.8 0", up: "2 0.4 0" },       // mole6 (sphere)
+            { down: "-2 -0.8 2", up: "-2 0.6 2" },     // mole7 (box)
+            { down: "0 -0.8 2", up: "0 0.4 2" },       // mole8 (sphere)
+            { down: "2 -0.8 2", up: "2 0.6 2" }        // mole9 (box)
         ];
 
         // Get DOM elements
@@ -274,3 +285,4 @@
     </script>
 </body>
 </html>
+
