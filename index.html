@@ -9,8 +9,8 @@
         <!-- Assets -->
         <a-assets>
             <a-mixin id="mole-animation" 
-                     animation__up="property: position; to: 0 1 0; dur: 500; easing: easeOutQuad"
-                     animation__down="property: position; to: 0 -0.5 0; dur: 300; easing: easeInQuad; startEvents: hide">
+                     animation__up="property: position; dur: 500; easing: easeOutQuad"
+                     animation__down="property: position; dur: 300; easing: easeInQuad; startEvents: hide">
             </a-mixin>
         </a-assets>
 
@@ -37,7 +37,7 @@
         <a-cylinder id="hole8" position="0 -0.1 2" radius="0.6" height="0.2" color="#8B4513"></a-cylinder>
         <a-cylinder id="hole9" position="2 -0.1 2" radius="0.6" height="0.2" color="#8B4513"></a-cylinder>
 
-        <!-- Moles (initially hidden) -->
+        <!-- Moles (positioned to match holes exactly) -->
         <!-- Box Moles -->
         <a-box id="mole1" mixin="mole-animation" position="-2 -0.5 -2" width="0.8" height="0.8" depth="0.8" 
                color="#8B4513" class="mole" visible="false"
@@ -45,36 +45,17 @@
                raycaster="objects: .mole">
         </a-box>
 
-        <a-box id="mole3" mixin="mole-animation" position="2 -0.5 -2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="false"
-               cursor="rayOrigin: mouse" 
-               raycaster="objects: .mole">
-        </a-box>
-
-        <a-box id="mole5" mixin="mole-animation" position="0 -0.5 0" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="false"
-               cursor="rayOrigin: mouse" 
-               raycaster="objects: .mole">
-        </a-box>
-
-        <a-box id="mole7" mixin="mole-animation" position="-2 -0.5 2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="false"
-               cursor="rayOrigin: mouse" 
-               raycaster="objects: .mole">
-        </a-box>
-
-        <a-box id="mole9" mixin="mole-animation" position="2 -0.5 2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="false"
-               cursor="rayOrigin: mouse" 
-               raycaster="objects: .mole">
-        </a-box>
-
-        <!-- Sphere Moles -->
         <a-sphere id="mole2" mixin="mole-animation" position="0 -0.5 -2" radius="0.4" 
                   color="#654321" class="mole" visible="false"
                   cursor="rayOrigin: mouse" 
                   raycaster="objects: .mole">
         </a-sphere>
+
+        <a-box id="mole3" mixin="mole-animation" position="2 -0.5 -2" width="0.8" height="0.8" depth="0.8" 
+               color="#8B4513" class="mole" visible="false"
+               cursor="rayOrigin: mouse" 
+               raycaster="objects: .mole">
+        </a-box>
 
         <a-sphere id="mole4" mixin="mole-animation" position="-2 -0.5 0" radius="0.4" 
                   color="#654321" class="mole" visible="false"
@@ -82,17 +63,35 @@
                   raycaster="objects: .mole">
         </a-sphere>
 
+        <a-box id="mole5" mixin="mole-animation" position="0 -0.5 0" width="0.8" height="0.8" depth="0.8" 
+               color="#8B4513" class="mole" visible="false"
+               cursor="rayOrigin: mouse" 
+               raycaster="objects: .mole">
+        </a-box>
+
         <a-sphere id="mole6" mixin="mole-animation" position="2 -0.5 0" radius="0.4" 
                   color="#654321" class="mole" visible="false"
                   cursor="rayOrigin: mouse" 
                   raycaster="objects: .mole">
         </a-sphere>
 
+        <a-box id="mole7" mixin="mole-animation" position="-2 -0.5 2" width="0.8" height="0.8" depth="0.8" 
+               color="#8B4513" class="mole" visible="false"
+               cursor="rayOrigin: mouse" 
+               raycaster="objects: .mole">
+        </a-box>
+
         <a-sphere id="mole8" mixin="mole-animation" position="0 -0.5 2" radius="0.4" 
                   color="#654321" class="mole" visible="false"
                   cursor="rayOrigin: mouse" 
                   raycaster="objects: .mole">
         </a-sphere>
+
+        <a-box id="mole9" mixin="mole-animation" position="2 -0.5 2" width="0.8" height="0.8" depth="0.8" 
+               color="#8B4513" class="mole" visible="false"
+               cursor="rayOrigin: mouse" 
+               raycaster="objects: .mole">
+        </a-box>
 
         <!-- Score Display -->
         <a-text id="score" position="-1 3 -3" value="Score: 0" color="white" align="center" 
@@ -120,6 +119,19 @@
         let gameActive = true;
         let activeMoles = [];
 
+        // Mole positions (matching the holes exactly)
+        const molePositions = [
+            { down: "-2 -0.5 -2", up: "-2 0.4 -2" },   // mole1
+            { down: "0 -0.5 -2", up: "0 0.2 -2" },     // mole2 (sphere)
+            { down: "2 -0.5 -2", up: "2 0.4 -2" },     // mole3
+            { down: "-2 -0.5 0", up: "-2 0.2 0" },     // mole4 (sphere)
+            { down: "0 -0.5 0", up: "0 0.4 0" },       // mole5
+            { down: "2 -0.5 0", up: "2 0.2 0" },       // mole6 (sphere)
+            { down: "-2 -0.5 2", up: "-2 0.4 2" },     // mole7
+            { down: "0 -0.5 2", up: "0 0.2 2" },       // mole8 (sphere)
+            { down: "2 -0.5 2", up: "2 0.4 2" }        // mole9
+        ];
+
         // Get DOM elements
         const scoreDisplay = document.querySelector('#score');
         const timerDisplay = document.querySelector('#timer');
@@ -138,28 +150,47 @@
             const mole = event.target;
             if (mole.getAttribute('visible')) {
                 // Hide the mole
-                mole.setAttribute('visible', false);
-                mole.emit('hide');
+                hideMole(mole);
                 
                 // Update score
                 score += 10;
                 scoreDisplay.setAttribute('value', `Score: ${score}`);
                 
-                // Remove from active moles
-                const index = activeMoles.indexOf(mole);
-                if (index > -1) {
-                    activeMoles.splice(index, 1);
-                }
-                
                 // Visual feedback
+                const originalColor = mole.getAttribute('color');
                 mole.setAttribute('color', '#FF0000');
                 setTimeout(() => {
-                    mole.setAttribute('color', mole.id.includes('mole1') || 
-                                              mole.id.includes('mole3') || 
-                                              mole.id.includes('mole5') || 
-                                              mole.id.includes('mole7') || 
-                                              mole.id.includes('mole9') ? '#8B4513' : '#654321');
+                    mole.setAttribute('color', originalColor);
                 }, 200);
+            }
+        }
+
+        // Show mole function
+        function showMole(mole) {
+            const moleIndex = parseInt(mole.id.replace('mole', '')) - 1;
+            const upPosition = molePositions[moleIndex].up;
+            
+            mole.setAttribute('visible', true);
+            mole.setAttribute('animation__up', `to: ${upPosition}; startEvents: none`);
+            mole.emit('animation__up');
+            activeMoles.push(mole);
+        }
+
+        // Hide mole function
+        function hideMole(mole) {
+            const moleIndex = parseInt(mole.id.replace('mole', '')) - 1;
+            const downPosition = molePositions[moleIndex].down;
+            
+            mole.setAttribute('animation__down', `to: ${downPosition}`);
+            mole.emit('hide');
+            
+            setTimeout(() => {
+                mole.setAttribute('visible', false);
+            }, 300);
+            
+            const index = activeMoles.indexOf(mole);
+            if (index > -1) {
+                activeMoles.splice(index, 1);
             }
         }
 
@@ -182,21 +213,13 @@
             const selectedMole = availableMoles[randomIndex];
             
             // Show the mole
-            selectedMole.setAttribute('visible', true);
-            selectedMole.setAttribute('animation__up', 'startEvents: none');
-            selectedMole.emit('animation__up');
-            activeMoles.push(selectedMole);
+            showMole(selectedMole);
             
-            // Hide mole after random time (1-3 seconds)
-            const hideTime = Math.random() * 2000 + 1000;
+            // Hide mole after random time (1.5-3 seconds)
+            const hideTime = Math.random() * 1500 + 1500;
             setTimeout(() => {
                 if (selectedMole.getAttribute('visible') && gameActive) {
-                    selectedMole.setAttribute('visible', false);
-                    selectedMole.emit('hide');
-                    const index = activeMoles.indexOf(selectedMole);
-                    if (index > -1) {
-                        activeMoles.splice(index, 1);
-                    }
+                    hideMole(selectedMole);
                 }
             }, hideTime);
         }
@@ -219,7 +242,9 @@
             
             // Hide all moles
             moles.forEach(mole => {
-                mole.setAttribute('visible', false);
+                if (mole.getAttribute('visible')) {
+                    hideMole(mole);
+                }
             });
             
             // Show final score
@@ -231,14 +256,14 @@
 
         // Start game
         function startGame() {
-            // Show moles every 800ms to 1500ms
+            // Show moles every 1-2 seconds
             const moleInterval = setInterval(() => {
                 if (gameActive) {
                     showRandomMole();
                 } else {
                     clearInterval(moleInterval);
                 }
-            }, Math.random() * 700 + 800);
+            }, Math.random() * 1000 + 1000);
             
             // Update timer every second
             const timerInterval = setInterval(() => {
@@ -257,3 +282,4 @@
     </script>
 </body>
 </html>
+
