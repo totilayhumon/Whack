@@ -6,7 +6,6 @@
 </head>
 <body>
     <a-scene background="color: #87CEEB" vr-mode-ui="enabled: true">
-        <!-- Assets -->
         <a-assets>
             <a-mixin id="mole-animation" 
                      animation__up="property: position; dur: 500; easing: easeOutQuad"
@@ -14,273 +13,179 @@
             </a-mixin>
         </a-assets>
 
-        <!-- Lighting -->
         <a-light type="ambient" color="#404040"></a-light>
         <a-light type="directional" position="2 4 2" color="#ffffff"></a-light>
 
-        <!-- Main Ground -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#228B22"></a-plane>
 
-        <!-- Create holes by placing dark circles at ground level -->
-        <!-- Row 1 -->
         <a-circle id="hole1" position="-2 0.01 -2" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
         <a-circle id="hole2" position="0 0.01 -2" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
         <a-circle id="hole3" position="2 0.01 -2" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
-
-        <!-- Row 2 -->
         <a-circle id="hole4" position="-2 0.01 0" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
         <a-circle id="hole5" position="0 0.01 0" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
         <a-circle id="hole6" position="2 0.01 0" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
-
-        <!-- Row 3 -->
         <a-circle id="hole7" position="-2 0.01 2" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
         <a-circle id="hole8" position="0 0.01 2" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
         <a-circle id="hole9" position="2 0.01 2" rotation="-90 0 0" radius="0.6" color="#1a1a1a"></a-circle>
 
-        <!-- Hole rims - brown rings around holes -->
-        <a-ring id="rim1" position="-2 0.02 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim2" position="0 0.02 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim3" position="2 0.02 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim4" position="-2 0.02 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim5" position="0 0.02 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim6" position="2 0.02 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim7" position="-2 0.02 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim8" position="0 0.02 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
-        <a-ring id="rim9" position="2 0.02 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="-2 0.02 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="0 0.02 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="2 0.02 -2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="-2 0.02 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="0 0.02 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="2 0.02 0" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="-2 0.02 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="0 0.02 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
+        <a-ring position="2 0.02 2" rotation="-90 0 0" radius-inner="0.6" radius-outer="0.8" color="#8B4513"></a-ring>
 
-        <!-- Moles (start hidden below ground) -->
-        <!-- Box Moles -->
-        <a-box id="mole1" mixin="mole-animation" position="-2 -0.6 -2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="true">
-        </a-box>
+        <a-box id="mole1" mixin="mole-animation" position="-2 -0.6 -2" width="0.8" height="0.8" depth="0.8" color="#8B4513" class="mole" visible="true"></a-box>
+        <a-sphere id="mole2" mixin="mole-animation" position="0 -0.6 -2" radius="0.4" color="#D2691E" class="mole" visible="true"></a-sphere>
+        <a-box id="mole3" mixin="mole-animation" position="2 -0.6 -2" width="0.8" height="0.8" depth="0.8" color="#8B4513" class="mole" visible="true"></a-box>
+        <a-sphere id="mole4" mixin="mole-animation" position="-2 -0.6 0" radius="0.4" color="#D2691E" class="mole" visible="true"></a-sphere>
+        <a-box id="mole5" mixin="mole-animation" position="0 -0.6 0" width="0.8" height="0.8" depth="0.8" color="#8B4513" class="mole" visible="true"></a-box>
+        <a-sphere id="mole6" mixin="mole-animation" position="2 -0.6 0" radius="0.4" color="#D2691E" class="mole" visible="true"></a-sphere>
+        <a-box id="mole7" mixin="mole-animation" position="-2 -0.6 2" width="0.8" height="0.8" depth="0.8" color="#8B4513" class="mole" visible="true"></a-box>
+        <a-sphere id="mole8" mixin="mole-animation" position="0 -0.6 2" radius="0.4" color="#D2691E" class="mole" visible="true"></a-sphere>
+        <a-box id="mole9" mixin="mole-animation" position="2 -0.6 2" width="0.8" height="0.8" depth="0.8" color="#8B4513" class="mole" visible="true"></a-box>
 
-        <a-sphere id="mole2" mixin="mole-animation" position="0 -0.6 -2" radius="0.4" 
-                  color="#D2691E" class="mole" visible="true">
-        </a-sphere>
+        <a-entity id="intro-screen" position="0 2 -4" visible="true">
+            <a-text position="0 1 0" value="VR WHACK-A-MOLE" color="#FFD700" align="center" width="12"></a-text>
+            <a-text position="0 0.3 0" value="Click or gaze at moles when they pop up!" color="white" align="center" width="8"></a-text>
+            <a-text position="0 -0.2 0" value="10 points per mole - 60 seconds to play" color="white" align="center" width="8"></a-text>
+            <a-text id="intro-start" position="0 -0.8 0" value="Game starts in 3 seconds..." color="#00FF00" align="center" width="8"></a-text>
+        </a-entity>
 
-        <a-box id="mole3" mixin="mole-animation" position="2 -0.6 -2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="true">
-        </a-box>
+        <a-entity id="game-ui" visible="false">
+            <a-text id="score" position="-1.5 3 -3" value="Score: 0" color="white" align="center" width="8"></a-text>
+            <a-text id="timer" position="1.5 3 -3" value="Time: 60" color="white" align="center" width="8"></a-text>
+        </a-entity>
 
-        <a-sphere id="mole4" mixin="mole-animation" position="-2 -0.6 0" radius="0.4" 
-                  color="#D2691E" class="mole" visible="true">
-        </a-sphere>
+        <a-entity id="game-over-screen" position="0 2 -4" visible="false">
+            <a-text position="0 0.5 0" value="GAME OVER!" color="#FF4444" align="center" width="12"></a-text>
+            <a-text id="final-score" position="0 -0.2 0" value="Final Score: 0" color="white" align="center" width="10"></a-text>
+            <a-text position="0 -0.8 0" value="Refresh page to play again" color="#00FF00" align="center" width="8"></a-text>
+        </a-entity>
 
-        <a-box id="mole5" mixin="mole-animation" position="0 -0.6 0" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="true">
-        </a-box>
-
-        <a-sphere id="mole6" mixin="mole-animation" position="2 -0.6 0" radius="0.4" 
-                  color="#D2691E" class="mole" visible="true">
-        </a-sphere>
-
-        <a-box id="mole7" mixin="mole-animation" position="-2 -0.6 2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="true">
-        </a-box>
-
-        <a-sphere id="mole8" mixin="mole-animation" position="0 -0.6 2" radius="0.4" 
-                  color="#D2691E" class="mole" visible="true">
-        </a-sphere>
-
-        <a-box id="mole9" mixin="mole-animation" position="2 -0.6 2" width="0.8" height="0.8" depth="0.8" 
-               color="#8B4513" class="mole" visible="true">
-        </a-box>
-
-        <!-- Score Display -->
-        <a-text id="score" position="-1 3 -3" value="Score: 0" color="white" align="center" 
-                width="8" font="dejavu"></a-text>
-
-        <!-- Timer Display -->
-        <a-text id="timer" position="1 3 -3" value="Time: 60" color="white" align="center" 
-                width="8" font="dejavu"></a-text>
-
-        <!-- Camera with cursor for VR -->
         <a-camera position="0 1.6 4" look-controls wasd-controls>
             <a-cursor position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                      material="color: white; shader: flat" 
-                      animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-                      animation__fuse="property: scale; startEvents: fuse; from: 1 1 1; to: 1.2 1.2 1.2; dur: 150"
-                      raycaster="objects: .mole">
+                      material="color: white; shader: flat" raycaster="objects: .mole">
             </a-cursor>
         </a-camera>
     </a-scene>
 
     <script>
-        // Game variables
-        let score = 0;
-        let timeLeft = 60;
-        let gameActive = true;
-        let activeMoles = [];
+        let score = 0, timeLeft = 60, gameActive = false, activeMoles = [], countdownTimer = 3;
 
-        // Mole positions - start hidden below, pop up above ground
         const molePositions = [
-            { down: "-2 -0.6 -2", up: "-2 0.6 -2" },   // mole1 (box)
-            { down: "0 -0.6 -2", up: "0 0.4 -2" },     // mole2 (sphere)
-            { down: "2 -0.6 -2", up: "2 0.6 -2" },     // mole3 (box)
-            { down: "-2 -0.6 0", up: "-2 0.4 0" },     // mole4 (sphere)
-            { down: "0 -0.6 0", up: "0 0.6 0" },       // mole5 (box)
-            { down: "2 -0.6 0", up: "2 0.4 0" },       // mole6 (sphere)
-            { down: "-2 -0.6 2", up: "-2 0.6 2" },     // mole7 (box)
-            { down: "0 -0.6 2", up: "0 0.4 2" },       // mole8 (sphere)
-            { down: "2 -0.6 2", up: "2 0.6 2" }        // mole9 (box)
+            { down: "-2 -0.6 -2", up: "-2 0.6 -2" }, { down: "0 -0.6 -2", up: "0 0.4 -2" }, { down: "2 -0.6 -2", up: "2 0.6 -2" },
+            { down: "-2 -0.6 0", up: "-2 0.4 0" }, { down: "0 -0.6 0", up: "0 0.6 0" }, { down: "2 -0.6 0", up: "2 0.4 0" },
+            { down: "-2 -0.6 2", up: "-2 0.6 2" }, { down: "0 -0.6 2", up: "0 0.4 2" }, { down: "2 -0.6 2", up: "2 0.6 2" }
         ];
 
-        // Get DOM elements
-        const scoreDisplay = document.querySelector('#score');
-        const timerDisplay = document.querySelector('#timer');
-        const moles = document.querySelectorAll('.mole');
+        const elements = {
+            score: document.querySelector('#score'),
+            timer: document.querySelector('#timer'),
+            moles: document.querySelectorAll('.mole'),
+            introScreen: document.querySelector('#intro-screen'),
+            gameUI: document.querySelector('#game-ui'),
+            gameOverScreen: document.querySelector('#game-over-screen'),
+            introStart: document.querySelector('#intro-start'),
+            finalScore: document.querySelector('#final-score')
+        };
 
-        // Track which moles are currently active (popped up)
-        let moleStates = new Array(9).fill(false); // false = hidden, true = visible
+        let moleStates = new Array(9).fill(false);
 
-        // Add click listeners to all moles
-        moles.forEach((mole, index) => {
+        elements.moles.forEach((mole, index) => {
             mole.addEventListener('click', () => hitMole(index));
-            mole.addEventListener('fuse', () => hitMole(index)); // For gaze interaction
+            mole.addEventListener('fuse', () => hitMole(index));
         });
 
-        // Hit mole function
-        function hitMole(moleIndex) {
-            if (!gameActive || !moleStates[moleIndex]) return;
-            
-            const mole = moles[moleIndex];
-            
-            // Hide the mole
-            hideMole(moleIndex);
-            
-            // Update score
-            score += 10;
-            scoreDisplay.setAttribute('value', `Score: ${score}`);
-            
-            // Visual feedback - flash red
-            const originalColor = mole.getAttribute('color');
-            mole.setAttribute('color', '#FF0000');
-            setTimeout(() => {
-                mole.setAttribute('color', originalColor);
-            }, 200);
-        }
-
-        // Show mole function
-        function showMole(moleIndex) {
-            const mole = moles[moleIndex];
-            const upPosition = molePositions[moleIndex].up;
-            
-            // Set animation target and trigger
-            mole.setAttribute('animation__up', `to: ${upPosition}; startEvents: popup`);
-            mole.emit('popup');
-            
-            moleStates[moleIndex] = true;
-            activeMoles.push(moleIndex);
-        }
-
-        // Hide mole function
-        function hideMole(moleIndex) {
-            const mole = moles[moleIndex];
-            const downPosition = molePositions[moleIndex].down;
-            
-            // Set animation target and trigger
-            mole.setAttribute('animation__down', `to: ${downPosition}; startEvents: hide`);
-            mole.emit('hide');
-            
-            moleStates[moleIndex] = false;
-            
-            // Remove from active moles
-            const index = activeMoles.indexOf(moleIndex);
-            if (index > -1) {
-                activeMoles.splice(index, 1);
-            }
-        }
-
-        // Show random mole
-        function showRandomMole() {
-            if (!gameActive) return;
-            
-            // Don't show too many moles at once
-            if (activeMoles.length >= 3) return;
-            
-            // Get available moles (not currently visible)
-            const availableMoles = [];
-            for (let i = 0; i < 9; i++) {
-                if (!moleStates[i]) {
-                    availableMoles.push(i);
-                }
-            }
-            
-            if (availableMoles.length === 0) return;
-            
-            // Pick random mole
-            const randomIndex = Math.floor(Math.random() * availableMoles.length);
-            const selectedMoleIndex = availableMoles[randomIndex];
-            
-            // Show the mole
-            showMole(selectedMoleIndex);
-            
-            // Hide mole after random time (1.5-3 seconds)
-            const hideTime = Math.random() * 1500 + 1500;
-            setTimeout(() => {
-                if (moleStates[selectedMoleIndex] && gameActive) {
-                    hideMole(selectedMoleIndex);
-                }
-            }, hideTime);
-        }
-
-        // Game timer
-        function updateTimer() {
-            if (!gameActive) return;
-            
-            timeLeft--;
-            timerDisplay.setAttribute('value', `Time: ${timeLeft}`);
-            
-            if (timeLeft <= 0) {
-                endGame();
-            }
-        }
-
-        // End game
-        function endGame() {
-            gameActive = false;
-            
-            // Hide all active moles
-            for (let i = 0; i < 9; i++) {
-                if (moleStates[i]) {
-                    hideMole(i);
-                }
-            }
-            
-            // Show final score
-            setTimeout(() => {
-                timerDisplay.setAttribute('value', `Game Over!`);
-                scoreDisplay.setAttribute('value', `Final Score: ${score}`);
-            }, 500);
-        }
-
-        // Start game
-        function startGame() {
-            console.log("Game starting...");
-            
-            // Show moles every 1-2 seconds
-            const moleInterval = setInterval(() => {
-                if (gameActive) {
-                    showRandomMole();
+        function startCountdown() {
+            const interval = setInterval(() => {
+                if (countdownTimer > 0) {
+                    elements.introStart.setAttribute('value', `Game starts in ${countdownTimer} seconds...`);
+                    countdownTimer--;
                 } else {
-                    clearInterval(moleInterval);
-                }
-            }, Math.random() * 1000 + 1000);
-            
-            // Update timer every second
-            const timerInterval = setInterval(() => {
-                if (gameActive) {
-                    updateTimer();
-                } else {
-                    clearInterval(timerInterval);
+                    clearInterval(interval);
+                    startGame();
                 }
             }, 1000);
         }
 
-        // Start the game after scene loads
+        function hitMole(index) {
+            if (!gameActive || !moleStates[index]) return;
+            hideMole(index);
+            score += 10;
+            elements.score.setAttribute('value', `Score: ${score}`);
+            const mole = elements.moles[index];
+            const color = mole.getAttribute('color');
+            mole.setAttribute('color', '#FF0000');
+            setTimeout(() => mole.setAttribute('color', color), 200);
+        }
+
+        function showMole(index) {
+            const mole = elements.moles[index];
+            mole.setAttribute('animation__up', `to: ${molePositions[index].up}; startEvents: popup`);
+            mole.emit('popup');
+            moleStates[index] = true;
+            activeMoles.push(index);
+        }
+
+        function hideMole(index) {
+            const mole = elements.moles[index];
+            mole.setAttribute('animation__down', `to: ${molePositions[index].down}; startEvents: hide`);
+            mole.emit('hide');
+            moleStates[index] = false;
+            const i = activeMoles.indexOf(index);
+            if (i > -1) activeMoles.splice(i, 1);
+        }
+
+        function showRandomMole() {
+            if (!gameActive || activeMoles.length >= 3) return;
+            const available = moleStates.map((state, i) => !state ? i : null).filter(i => i !== null);
+            if (available.length === 0) return;
+            const index = available[Math.floor(Math.random() * available.length)];
+            showMole(index);
+            setTimeout(() => {
+                if (moleStates[index] && gameActive) hideMole(index);
+            }, Math.random() * 1500 + 1500);
+        }
+
+        function updateTimer() {
+            if (!gameActive) return;
+            timeLeft--;
+            elements.timer.setAttribute('value', `Time: ${timeLeft}`);
+            if (timeLeft <= 0) endGame();
+        }
+
+        function endGame() {
+            gameActive = false;
+            for (let i = 0; i < 9; i++) {
+                if (moleStates[i]) hideMole(i);
+            }
+            setTimeout(() => {
+                elements.gameUI.setAttribute('visible', false);
+                elements.gameOverScreen.setAttribute('visible', true);
+                elements.finalScore.setAttribute('value', `Final Score: ${score}`);
+            }, 500);
+        }
+
+        function startGame() {
+            gameActive = true;
+            elements.introScreen.setAttribute('visible', false);
+            elements.gameUI.setAttribute('visible', true);
+            
+            setInterval(() => {
+                if (gameActive) showRandomMole();
+            }, Math.random() * 1000 + 1000);
+            
+            setInterval(() => {
+                if (gameActive) updateTimer();
+            }, 1000);
+        }
+
         document.querySelector('a-scene').addEventListener('loaded', () => {
-            console.log("Scene loaded, starting game in 2 seconds...");
-            setTimeout(startGame, 2000);
+            setTimeout(startGame, 1000);
         });
     </script>
 </body>
